@@ -1,0 +1,6 @@
+sensor_type,device_type,label,label_start,label_start_datetime,label_end,label_end_datetime
+interval_label,smartphone,Driving,1.5282E+18, 6/5/2018 1:11:33 PM,1.5282E+18, 6/5/2018 1:11:44 PM
+interval_label,smartphone,Walking,1.52821E+18, 6/5/2018 2:02:02 PM,1.52821E+18,6/5/2018 14:02
+interval_label,smartphone,Phone on table,1.52812E+18,6/4/2018 13:11,1.52812E+18,6/4/2018 1:11
+,,,,,,
+,,,,,,
