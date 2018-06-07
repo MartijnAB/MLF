@@ -8,7 +8,7 @@
 ##############################################################
 
 
-dataset_path = 'D:\Cursuri Master\Machine Learning for the Quantified Self\Recorded obs/'
+dataset_path = '../Observation files/'
 result_dataset_path = dataset_path
 
 # Import the relevant classes.
@@ -30,7 +30,7 @@ if not os.path.exists(result_dataset_path):
 # coarse grained, namely one measurement per minute, and secondly use four measurements
 # per second
 
-granularities = [60000, 250]
+granularities = [250,100]
 datasets = []
 
 for milliseconds_per_instance in granularities:
@@ -42,14 +42,14 @@ for milliseconds_per_instance in granularities:
 
     # We add the accelerometer data (continuous numerical measurements) of the phone and the smartwatch
     # and aggregate the values per timestep by averaging the values/
-    DataSet.add_numerical_dataset('metro-acc.csv', 'timestamps', ['x','y','z'], 'avg', 'acc_phone_')
+    DataSet.add_numerical_dataset('accelerometer_phone.csv', 'timestamps', ['x','y','z'], 'avg', 'acc_phone_')
     
     # We add the gyroscope data (continuous numerical measurements) of the phone and the smartwatch
     # and aggregate the values per timestep by averaging the values/
-    DataSet.add_numerical_dataset('metro-gyr.csv', 'timestamps', ['x','y','z'], 'avg', 'gyr_phone_')
+    DataSet.add_numerical_dataset('gyroscope_phone.csv', 'timestamps', ['x','y','z'], 'avg', 'gyr_phone_')
    
     # We add the heart rate (continuous numerical measurements) and aggregate by averaging again
-   # DataSet.add_numerical_dataset('heart_rate_smartwatch.csv', 'timestamps', ['rate'], 'avg', 'hr_watch_')
+    #DataSet.add_numerical_dataset('heart_rate_smartwatch.csv', 'timestamps', ['rate'], 'avg', 'hr_watch_')
 
     # We add the labels provided by the users. These are categorical events that might overlap. We add them
     # as binary attributes (i.e. add a one to the attribute representing the specific value for the label if it
@@ -60,10 +60,10 @@ for milliseconds_per_instance in granularities:
     
     # We add the magnetometer data (continuous numerical measurements) of the phone and the smartwatch
     # and aggregate the values per timestep by averaging the values
-    DataSet.add_numerical_dataset('metro-grv.csv', 'timestamps', ['x','y','z'], 'avg', 'mag_phone_')
+    DataSet.add_numerical_dataset('magnetometer_phone.csv', 'timestamps', ['x','y','z'], 'avg', 'mag_phone_')
     
-    # We add the pressure sensed by the phone (continuous numerical measurements) and aggregate by averaging again
-    
+    # We add the gravitation sensed by the phone (continuous numerical measurements) and aggregate by averaging again
+    DataSet.add_numerical_dataset('gravitation_phone.csv', 'timestamps', ['x','y','z'], 'avg', 'grv_phone_')
     # Get the resulting pandas data table
 
     dataset = DataSet.data_table
@@ -76,7 +76,7 @@ for milliseconds_per_instance in granularities:
     DataViz.plot_dataset_boxplot(dataset, ['acc_phone_x','acc_phone_y','acc_phone_z'])
 
     # Plot all data
-    DataViz.plot_dataset(dataset, ['acc_', 'gyr_',  'mag_', 'label'], ['like', 'like', 'like', 'like'], ['line', 'line', 'line', 'points'])
+    DataViz.plot_dataset(dataset, ['acc_', 'gyr_', 'mag_','grv_','label'], ['like', 'like', 'like', 'like','like'], ['line', 'line', 'line','line','points'])
 
     # And print a summary of the dataset
 
